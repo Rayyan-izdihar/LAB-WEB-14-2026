@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tim Marsha - Pantau Tugas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-900 font-['Inter',system-ui,sans-serif] antialiased">
+
+  <div class="max-w-6xl mx-auto p-4 md:p-6 grid gap-5 md:grid-cols-[260px_1fr] items-start">
+
+    <!-- Sidebar: daftar anggota (F1) -->
+    <aside class="bg-white border border-slate-200 rounded-2xl p-4 md:sticky md:top-6">
+      <h1 class="text-lg font-semibold px-1">Tim Marsha</h1>
+      <p class="text-xs font-medium text-slate-500 mt-4 mb-2 px-1">Anggota</p>
+      <p id="status-anggota" class="hidden text-sm px-1 py-2"></p>
+      <nav id="daftar-anggota" class="flex flex-col gap-1"></nav>
+    </aside>
+
+    <!-- Panel utama: tugas anggota (F2 - F5) -->
+    <main class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+
+      <!-- Header -->
+      <header class="px-6 pt-6 pb-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 id="judul-bagian" class="text-2xl font-bold">Tugas</h2>
+          <p id="ringkasan" class="text-sm text-slate-500 mt-1">Pilih anggota untuk melihat tugasnya</p>
+        </div>
+        <div class="w-full sm:w-56 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+          <div id="bar-progres" class="h-full w-0 bg-emerald-600 rounded-full transition-all duration-500"></div>
+        </div>
+      </header>
+
+      <!-- Cari + tambah tugas (F3 & F4) -->
+      <div class="px-6 py-4 border-t border-slate-200">
+        <div class="flex flex-col gap-3 md:flex-row">
+          <input
+            id="cari-tugas"
+            type="text"
+            placeholder="Cari judul tugas"
+            disabled
+            class="md:w-1/3 px-3 py-2 text-sm rounded-lg border border-slate-200 bg-slate-100 placeholder-slate-400 transition duration-200 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+          <form id="form-tugas" class="flex flex-1 gap-3" novalidate>
+            <input
+              id="judul-tugas"
+              type="text"
+              placeholder="Tambah tugas baru, minimal 5 karakter"
+              disabled
+              class="flex-1 min-w-0 px-3 py-2 text-sm rounded-lg border border-slate-200 placeholder-slate-400 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+            <button
+              id="tombol-simpan"
+              type="submit"
+              disabled
+              class="px-5 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg transition duration-200 hover:bg-blue-700 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-blue-600"
+            >Simpan</button>
+          </form>
+        </div>
+        <p id="pesan-form" class="hidden mt-2 text-sm text-red-600"></p>
+      </div>
+
+      <!-- Daftar tugas -->
+      <div class="border-t border-slate-200">
+        <p id="status-tugas" class="px-6 py-6 text-sm text-slate-500">Pilih salah satu anggota di sebelah kiri.</p>
+        <ul id="daftar-tugas"></ul>
+      </div>
+    </main>
+  </div>
+
+  <!-- Notifikasi (hilang otomatis setelah 3 detik) -->
+  <div
+    id="notifikasi"
+    role="status"
+    class="fixed bottom-6 right-6 px-4 py-3 rounded-lg bg-emerald-600 text-white text-sm font-medium shadow-lg opacity-0 translate-y-2 pointer-events-none transition-all duration-300"
+  ></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
