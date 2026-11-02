@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-krem: #F6EBD9;
+  --color-krem-tua: #EEDDC2;
+  --color-kertas: #FFFCF6;
+  --color-navy: #0B2A5B;
+  --color-oranye: #C84A0B;
+  --color-cokelat: #8A4F25;
+  --font-sans: "Roboto", system-ui, sans-serif;
+  --font-judul: "Roboto Slab", Georgia, serif;
+}
+
+@utility btn-angkat {
+  @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-xl active:scale-95;
+}
+
+@utility btn-tekan {
+  @apply transition-all duration-200 active:scale-95;
+}
+
+@utility input-focus {
+  @apply outline-none transition-all focus:border-oranye/70 focus:ring-4 focus:ring-oranye/20;
+}
